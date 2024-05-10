@@ -94,30 +94,6 @@ inputTextElem.addEventListener("input", (e) => {
   translate();
 });
 
-const uploadDocument = document.querySelector("#upload-document"),
-  uploadTitle = document.querySelector("#upload-title");
-
-uploadDocument.addEventListener("change", (e) => {
-  const file = e.target.files[0];
-  if (
-    file.type === "application/pdf" ||
-    file.type === "text/plain" ||
-    file.type === "application/msword" ||
-    file.type ===
-      "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
-  ) {
-    uploadTitle.innerHTML = file.name;
-    const reader = new FileReader();
-    reader.readAsText(file);
-    reader.onload = (e) => {
-      inputTextElem.value = e.target.result;
-      translate();
-    };
-  } else {
-    alert("Please upload a valid file");
-  }
-});
-
 const downloadBtn = document.querySelector("#download-btn");
 
 downloadBtn.addEventListener("click", (e) => {
